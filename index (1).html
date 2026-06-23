@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Deepanshu & Deepanshi | Ring Ceremony</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;overflow-x:hidden;background:#b8cfe0;}
+body{font-family:'Cormorant Garamond',serif;}
+
+/* ══ INTRO ══ */
+#intro{
+  position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(160deg,#c8dcea 0%,#ddeef8 50%,#cfe4f0 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:opacity 1.4s ease,transform 1.4s ease;
+}
+#intro.hide{opacity:0;pointer-events:none;transform:scale(1.06);}
+
+.env-wrap{
+  display:flex;flex-direction:column;align-items:center;
+  animation:envFloat 3.5s ease-in-out infinite;
+}
+@keyframes envFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+.intro-names{
+  font-family:'Great Vibes',cursive;
+  font-size:44px;color:#2d5f7e;text-align:center;
+  margin-top:22px;line-height:1.2;
+  text-shadow:0 2px 20px rgba(45,95,126,0.2);
+}
+.intro-sub{
+  font-size:12px;letter-spacing:5px;text-transform:uppercase;
+  color:#6a9ab8;margin-top:10px;text-align:center;
+}
+.intro-tap{
+  margin-top:38px;font-size:11px;letter-spacing:4px;
+  text-transform:uppercase;color:#7ab0cc;
+  animation:blink 2.5s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:0.25;}50%{opacity:1;}}
+
+/* ══ MAIN ══ */
+#main{opacity:0;transition:opacity 1.2s ease;max-width:520px;margin:0 auto;}
+#main.show{opacity:1;}
+
+/* ══ HERO ══ */
+.hero{
+  height:100vh;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-sky{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,#8bb8d4 0%,#b0ccdf 25%,#ccdee9 50%,#dceef5 75%,#eaf4fa 100%);
+}
+
+/* Clouds */
+.cloud{
+  position:absolute;pointer-events:none;
+  animation:cloudMove linear infinite;
+}
+@keyframes cloudMove{from{transform:translateX(-250px);}to{transform:translateX(calc(100vw + 250px));}}
+
+/* Parallax layers */
+.pl{position:absolute;width:100%;left:0;bottom:0;pointer-events:none;will-change:transform;}
+
+/* Birds */
+.bird{position:absolute;pointer-events:none;animation:birdFly linear infinite;}
+@keyframes birdFly{
+  0%{transform:translateX(-100px) translateY(0);}
+  30%{transform:translateX(30vw) translateY(-12px);}
+  60%{transform:translateX(60vw) translateY(6px);}
+  100%{transform:translateX(calc(100vw+100px)) translateY(-4px);}
+}
+
+/* Hero text */
+.hero-text{
+  position:relative;z-index:20;text-align:center;padding:0 30px;
+  animation:heroIn 2s ease 1.5s both;
+}
+@keyframes heroIn{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+.hero-tag{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,95,126,0.7);margin-bottom:16px;}
+
+.mono-ring{
+  width:96px;height:96px;margin:0 auto 18px;border-radius:50%;
+  background:rgba(255,255,255,0.4);backdrop-filter:blur(10px);
+  border:1.5px solid rgba(74,122,155,0.3);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 30px rgba(74,122,155,0.2);
+  animation:monoPulse 3s ease-in-out infinite alternate;
+}
+@keyframes monoPulse{
+  from{box-shadow:0 8px 30px rgba(74,122,155,0.15);}
+  to{box-shadow:0 8px 50px rgba(74,122,155,0.45),0 0 80px rgba(74,122,155,0.12);}
+}
+.mono-letter{font-family:'Great Vibes',cursive;font-size:54px;color:#2d5f7e;line-height:1;}
+
+.hero-names{font-family:'Great Vibes',cursive;font-size:64px;color:#1d4f6e;line-height:1.1;text-shadow:0 4px 20px rgba(29,79,110,0.18);}
+.hero-and{font-family:'Great Vibes',cursive;font-size:38px;color:#4a7a9b;display:block;margin:0;}
+.hero-date{margin-top:16px;font-size:13px;letter-spacing:4px;text-transform:uppercase;color:#4a7a9b;}
+
+.scroll-cue{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  z-index:20;text-align:center;animation:cueFloat 2s ease-in-out infinite;
+}
+@keyframes cueFloat{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+.scroll-cue span{display:block;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(74,122,155,0.55);margin-bottom:7px;}
+.sarrow{width:18px;height:18px;margin:0 auto;border-right:1.5px solid rgba(74,122,155,0.45);border-bottom:1.5px solid rgba(74,122,155,0.45);transform:rotate(45deg);}
+
+/* ══ SECTIONS ══ */
+.sec{position:relative;overflow:hidden;}
+.sec-inner{max-width:520px;margin:0 auto;padding:55px 30px;}
+
+.sec-bg-1{background:linear-gradient(180deg,#ddeef8 0%,#e8f4fb 100%);}
+.sec-bg-2{background:linear-gradient(180deg,#e4f1f8 0%,#d4e8f2 100%);}
+.sec-bg-3{background:linear-gradient(180deg,#d4e8f2 0%,#c0d8e8 100%);}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(36px);transition:opacity 0.85s ease,transform 0.85s ease;}
+.rv.on{opacity:1;transform:translateY(0);}
+.rv.d1{transition-delay:0.1s;}.rv.d2{transition-delay:0.2s;}.rv.d3{transition-delay:0.35s;}
+
+.orn{text-align:center;color:rgba(74,122,155,0.4);font-size:20px;letter-spacing:10px;margin-bottom:28px;}
+
+/* Family card */
+.fcard{
+  background:rgba(255,255,255,0.48);backdrop-filter:blur(8px);
+  border:1px solid rgba(74,122,155,0.18);border-radius:5px;
+  padding:26px 22px;text-align:center;margin-bottom:18px;
+}
+.fcard-lbl{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#6a9ab8;margin-bottom:10px;}
+.fcard-txt{font-family:'Playfair Display',serif;font-size:16px;color:#2d5f7e;line-height:1.75;}
+.fcard-txt em{font-size:13px;color:#6a9ab8;font-style:italic;display:block;margin-top:8px;font-family:'Cormorant Garamond',serif;}
+
+/* Big couple names */
+.couple-blk{text-align:center;margin:8px 0 28px;}
+.cname{font-family:'Great Vibes',cursive;font-size:72px;color:#1d4f6e;line-height:1;text-shadow:0 4px 20px rgba(29,79,110,0.15);animation:shimmer 4s ease-in-out infinite alternate;}
+@keyframes shimmer{from{text-shadow:0 4px 20px rgba(29,79,110,0.12);}to{text-shadow:0 4px 30px rgba(29,79,110,0.38),0 0 60px rgba(74,122,155,0.12);}}
+.cand{font-family:'Great Vibes',cursive;font-size:44px;color:#4a7a9b;display:block;margin:2px 0;}
+
+/* Details frame */
+.dframe{
+  background:rgba(255,255,255,0.48);backdrop-filter:blur(10px);
+  border:1px solid rgba(74,122,155,0.2);border-radius:5px;
+  padding:34px 26px;text-align:center;position:relative;
+}
+.dframe::before,.dframe::after{content:'✦';position:absolute;color:rgba(74,122,155,0.3);font-size:12px;left:50%;transform:translateX(-50%);}
+.dframe::before{top:10px;}.dframe::after{bottom:10px;}
+
+.cer-script{font-family:'Great Vibes',cursive;font-size:48px;color:#2d5f7e;margin-bottom:26px;text-shadow:0 2px 15px rgba(45,95,126,0.18);}
+
+.dgrid{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(74,122,155,0.12);border-radius:3px;overflow:hidden;}
+.dcell{padding:18px 12px;border:1px solid rgba(74,122,155,0.1);text-align:center;}
+.dcell.full{grid-column:1/-1;}
+.dlbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#6a9ab8;margin-bottom:7px;}
+.dval{font-family:'Playfair Display',serif;font-size:24px;color:#1d4f6e;line-height:1.2;}
+.dval small{display:block;font-size:13px;color:#5a8aaa;font-style:italic;margin-top:3px;font-family:'Cormorant Garamond',serif;}
+
+/* Countdown */
+.cd-row{display:flex;justify-content:center;gap:8px;margin-top:16px;}
+.cdb{background:rgba(255,255,255,0.5);backdrop-filter:blur(6px);border:1px solid rgba(74,122,155,0.2);border-radius:4px;padding:12px 14px;min-width:64px;text-align:center;}
+.cdn{font-family:'Playfair Display',serif;font-size:28px;color:#1d4f6e;display:block;line-height:1;}
+.cdu{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#6a9ab8;margin-top:4px;display:block;}
+
+/* Music player */
+.mplayer{
+  background:rgba(255,255,255,0.48);backdrop-filter:blur(8px);
+  border:1px solid rgba(74,122,155,0.2);border-radius:5px;
+  padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px;
+}
+.pbtn{
+  width:50px;height:50px;border-radius:50%;
+  background:linear-gradient(135deg,#4a7a9b,#1d4f6e);
+  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;box-shadow:0 4px 18px rgba(29,79,110,0.35);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.pbtn:active{transform:scale(0.94);}
+.ptri{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px;}
+.pbrs{display:flex;gap:3px;align-items:center;}
+.pbr{width:4px;height:16px;background:white;border-radius:2px;}
+.sinfo{flex:1;}
+.stitle{font-family:'Playfair Display',serif;font-size:16px;color:#1d4f6e;}
+.sartist{font-size:13px;color:#6a9ab8;font-style:italic;margin-top:2px;}
+.mbrs{display:flex;gap:3px;align-items:center;}
+.mbr{width:3px;border-radius:2px;background:#4a7a9b;animation:mw 0.7s ease-in-out infinite;}
+@keyframes mw{0%,100%{height:4px;}50%{height:20px;}}
+
+/* Map + contact */
+.mapbtn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:rgba(255,255,255,0.45);backdrop-filter:blur(8px);
+  border:1px solid rgba(74,122,155,0.2);border-radius:5px;
+  padding:17px;color:#1d4f6e;font-family:'Cormorant Garamond',serif;
+  font-size:16px;letter-spacing:2px;text-decoration:none;
+  margin-bottom:14px;transition:all 0.3s;
+}
+.mapbtn:hover{background:rgba(255,255,255,0.7);}
+
+.cbox{background:rgba(255,255,255,0.4);border:1px solid rgba(74,122,155,0.15);border-radius:5px;padding:18px;text-align:center;}
+.clbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#6a9ab8;margin-bottom:6px;}
+.cnum{font-family:'Playfair Display',serif;font-size:20px;color:#1d4f6e;text-decoration:none;display:block;}
+
+/* Footer */
+.footer{background:#a8c4d8;text-align:center;padding:22px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,95,126,0.5);}
+
+/* Petals */
+.petal{position:fixed;pointer-events:none;z-index:100;border-radius:50% 0 50% 0;animation:petalFall linear infinite;}
+@keyframes petalFall{
+  0%{transform:translateY(-30px) rotate(0deg);opacity:0;}
+  8%{opacity:0.65;}92%{opacity:0.3;}
+  100%{transform:translateY(106vh) rotate(560deg);opacity:0;}
+}
+
+/* FW canvas */
+#fwc{position:fixed;inset:0;pointer-events:none;z-index:9990;}
+</style>
+</head>
+<body>
+<canvas id="fwc"></canvas>
+<audio id="bgm" loop preload="none" crossorigin="anonymous"></audio>
+
+<!-- INTRO -->
+<div id="intro" onclick="openInv()">
+  <div class="env-wrap">
+    <svg width="240" height="175" viewBox="0 0 240 175" fill="none" xmlns="http://www.w3.org/2000/svg"
+      style="filter:drop-shadow(0 8px 30px rgba(74,122,155,0.3))">
+      <!-- Envelope -->
+      <rect x="8" y="38" width="224" height="132" rx="6" fill="rgba(232,244,251,0.88)" stroke="rgba(74,122,155,0.32)" stroke-width="1.5"/>
+      <!-- Flap -->
+      <path d="M8 38 L120 108 L232 38" fill="rgba(205,225,240,0.72)" stroke="rgba(74,122,155,0.28)" stroke-width="1.5"/>
+      <!-- Side folds -->
+      <path d="M8 170 L88 108" stroke="rgba(74,122,155,0.18)" stroke-width="1"/>
+      <path d="M232 170 L152 108" stroke="rgba(74,122,155,0.18)" stroke-width="1"/>
+      <!-- Wax seal -->
+      <circle cx="120" cy="107" r="30" fill="rgba(61,111,142,0.88)"/>
+      <circle cx="120" cy="107" r="23" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+      <text x="120" y="117" text-anchor="middle" font-family="'Great Vibes',cursive" font-size="28" fill="white">D</text>
+      <!-- Corner florals -->
+      <circle cx="35" cy="62" r="9" fill="rgba(180,212,232,0.65)"/>
+      <circle cx="50" cy="52" r="7" fill="rgba(200,225,242,0.65)"/>
+      <circle cx="22" cy="55" r="6" fill="rgba(190,218,238,0.6)"/>
+      <circle cx="205" cy="62" r="9" fill="rgba(180,212,232,0.65)"/>
+      <circle cx="190" cy="52" r="7" fill="rgba(200,225,242,0.65)"/>
+      <circle cx="218" cy="55" r="6" fill="rgba(190,218,238,0.6)"/>
+    </svg>
+    <div class="intro-names">Deepanshu & Deepanshi</div>
+    <div class="intro-sub">Ring Ceremony · 5th July 2026</div>
+  </div>
+  <div class="intro-tap">✦ Tap to open your invitation ✦</div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-sky"></div>
+
+    <!-- Clouds -->
+    <svg class="cloud" style="top:10%;animation-duration:38s;animation-delay:0s;opacity:0.55;" width="130" height="50" viewBox="0 0 130 50">
+      <ellipse cx="65" cy="38" rx="65" ry="20" fill="rgba(255,255,255,0.6)"/>
+      <ellipse cx="45" cy="28" rx="30" ry="22" fill="rgba(255,255,255,0.6)"/>
+      <ellipse cx="75" cy="25" rx="26" ry="20" fill="rgba(255,255,255,0.6)"/>
+      <ellipse cx="95" cy="32" rx="22" ry="16" fill="rgba(255,255,255,0.6)"/>
+    </svg>
+    <svg class="cloud" style="top:22%;animation-duration:52s;animation-delay:14s;opacity:0.4;" width="90" height="36" viewBox="0 0 90 36">
+      <ellipse cx="45" cy="28" rx="45" ry="14" fill="rgba(255,255,255,0.55)"/>
+      <ellipse cx="30" cy="20" rx="22" ry="16" fill="rgba(255,255,255,0.55)"/>
+      <ellipse cx="58" cy="18" rx="18" ry="14" fill="rgba(255,255,255,0.55)"/>
+    </svg>
+
+    <!-- Layer 1 far -->
+    <svg class="pl" id="l1" style="height:88%;" viewBox="0 0 480 580" preserveAspectRatio="xMidYMax slice">
+      <ellipse cx="70" cy="420" rx="130" ry="65" fill="rgba(140,185,208,0.22)"/>
+      <ellipse cx="410" cy="430" rx="120" ry="58" fill="rgba(140,185,208,0.22)"/>
+      <ellipse cx="240" cy="395" rx="160" ry="72" fill="rgba(150,192,215,0.18)"/>
+      <ellipse cx="25" cy="340" rx="14" ry="52" fill="rgba(95,140,115,0.28)"/>
+      <ellipse cx="58" cy="328" rx="12" ry="46" fill="rgba(108,148,122,0.22)"/>
+      <ellipse cx="455" cy="340" rx="14" ry="52" fill="rgba(95,140,115,0.28)"/>
+      <ellipse cx="422" cy="328" rx="12" ry="46" fill="rgba(108,148,122,0.22)"/>
+    </svg>
+
+    <!-- Layer 2 mid gate -->
+    <svg class="pl" id="l2" style="height:84%;" viewBox="0 0 480 560" preserveAspectRatio="xMidYMax slice">
+      <!-- Gate posts -->
+      <rect x="148" y="0" width="14" height="290" rx="3" fill="rgba(175,208,228,0.32)"/>
+      <rect x="318" y="0" width="14" height="290" rx="3" fill="rgba(175,208,228,0.32)"/>
+      <!-- Arch -->
+      <path d="M148,0 Q148,110 128,175 Q118,200 108,228" fill="none" stroke="rgba(115,168,198,0.35)" stroke-width="2"/>
+      <path d="M332,0 Q332,110 352,175 Q362,200 372,228" fill="none" stroke="rgba(115,168,198,0.35)" stroke-width="2"/>
+      <!-- Top arch flowers -->
+      <circle cx="155" cy="22" r="13" fill="rgba(218,235,248,0.78)"/>
+      <circle cx="182" cy="8" r="11" fill="rgba(228,242,253,0.75)"/>
+      <circle cx="210" cy="0" r="13" fill="rgba(222,238,250,0.78)"/>
+      <circle cx="240" cy="-5" r="16" fill="rgba(232,244,254,0.82)"/>
+      <circle cx="270" cy="0" r="13" fill="rgba(222,238,250,0.78)"/>
+      <circle cx="298" cy="8" r="11" fill="rgba(228,242,253,0.75)"/>
+      <circle cx="325" cy="22" r="13" fill="rgba(218,235,248,0.78)"/>
+      <!-- White bloom centers -->
+      <circle cx="155" cy="18" r="5" fill="rgba(255,255,255,0.9)"/>
+      <circle cx="210" cy="-4" r="6" fill="rgba(255,255,255,0.9)"/>
+      <circle cx="240" cy="-9" r="7" fill="rgba(255,255,255,0.9)"/>
+      <circle cx="270" cy="-4" r="6" fill="rgba(255,255,255,0.9)"/>
+      <circle cx="325" cy="18" r="5" fill="rgba(255,255,255,0.9)"/>
+      <!-- Leaves -->
+      <ellipse cx="195" cy="4" rx="10" ry="5" fill="rgba(118,168,138,0.5)" transform="rotate(-22 195 4)"/>
+      <ellipse cx="285" cy="4" rx="10" ry="5" fill="rgba(118,168,138,0.5)" transform="rotate(22 285 4)"/>
+      <!-- Side post flowers -->
+      <circle cx="148" cy="55" r="11" fill="rgba(215,233,247,0.7)"/>
+      <circle cx="148" cy="82" r="9" fill="rgba(225,240,252,0.65)"/>
+      <circle cx="332" cy="55" r="11" fill="rgba(215,233,247,0.7)"/>
+      <circle cx="332" cy="82" r="9" fill="rgba(225,240,252,0.65)"/>
+    </svg>
+
+    <!-- Layer 3 front trees -->
+    <svg class="pl" id="l3" style="height:80%;" viewBox="0 0 480 510" preserveAspectRatio="xMidYMax slice">
+      <!-- Left cypress tall -->
+      <ellipse cx="42" cy="200" rx="26" ry="105" fill="rgba(65,108,80,0.55)"/>
+      <ellipse cx="42" cy="190" rx="18" ry="86" fill="rgba(80,125,95,0.38)"/>
+      <!-- Left flower cluster -->
+      <circle cx="100" cy="185" r="42" fill="rgba(192,220,240,0.62)"/>
+      <circle cx="76" cy="168" r="32" fill="rgba(208,228,245,0.62)"/>
+      <circle cx="120" cy="172" r="34" fill="rgba(198,222,242,0.58)"/>
+      <circle cx="86" cy="155" r="8" fill="rgba(255,255,255,0.88)"/>
+      <circle cx="106" cy="147" r="9" fill="rgba(255,255,255,0.88)"/>
+      <circle cx="76" cy="162" r="6" fill="rgba(255,255,255,0.82)"/>
+      <circle cx="120" cy="158" r="7" fill="rgba(255,255,255,0.85)"/>
+      <!-- Right cypress tall -->
+      <ellipse cx="438" cy="200" rx="26" ry="105" fill="rgba(65,108,80,0.55)"/>
+      <ellipse cx="438" cy="190" rx="18" ry="86" fill="rgba(80,125,95,0.38)"/>
+      <!-- Right flower cluster -->
+      <circle cx="380" cy="185" r="42" fill="rgba(192,220,240,0.62)"/>
+      <circle cx="404" cy="168" r="32" fill="rgba(208,228,245,0.62)"/>
+      <circle cx="360" cy="172" r="34" fill="rgba(198,222,242,0.58)"/>
+      <circle cx="394" cy="155" r="8" fill="rgba(255,255,255,0.88)"/>
+      <circle cx="374" cy="147" r="9" fill="rgba(255,255,255,0.88)"/>
+      <circle cx="404" cy="162" r="6" fill="rgba(255,255,255,0.82)"/>
+      <circle cx="360" cy="158" r="7" fill="rgba(255,255,255,0.85)"/>
+      <!-- Ground lawn -->
+      <ellipse cx="240" cy="510" rx="290" ry="62" fill="rgba(125,170,140,0.32)"/>
+      <ellipse cx="240" cy="498" rx="245" ry="46" fill="rgba(138,180,152,0.28)"/>
+      <!-- Pathway steps -->
+      <path d="M202,510 L218,355 L262,355 L278,510 Z" fill="rgba(198,220,236,0.38)"/>
+      <rect x="207" y="478" width="66" height="10" rx="2" fill="rgba(200,222,238,0.5)"/>
+      <rect x="212" y="465" width="56" height="10" rx="2" fill="rgba(208,226,242,0.5)"/>
+      <rect x="217" y="452" width="46" height="10" rx="2" fill="rgba(214,232,246,0.5)"/>
+    </svg>
+
+    <!-- Birds -->
+    <svg class="bird" style="top:16%;animation-duration:24s;animation-delay:2s;" width="38" height="14" viewBox="0 0 38 14">
+      <path d="M0,7 Q9.5,0 19,7 Q28.5,0 38,7" fill="none" stroke="rgba(74,122,155,0.48)" stroke-width="1.5"/>
+    </svg>
+    <svg class="bird" style="top:26%;animation-duration:32s;animation-delay:9s;" width="26" height="10" viewBox="0 0 26 10">
+      <path d="M0,5 Q6.5,0 13,5 Q19.5,0 26,5" fill="none" stroke="rgba(74,122,155,0.38)" stroke-width="1.2"/>
+    </svg>
+    <svg class="bird" style="top:20%;animation-duration:40s;animation-delay:18s;" width="20" height="8" viewBox="0 0 20 8">
+      <path d="M0,4 Q5,0 10,4 Q15,0 20,4" fill="none" stroke="rgba(74,122,155,0.3)" stroke-width="1"/>
+    </svg>
+
+    <!-- Hero text -->
+    <div class="hero-text">
+      <div class="hero-tag">✦ With God's Blessings ✦</div>
+      <div class="mono-ring"><span class="mono-letter">D</span></div>
+      <div class="hero-names">
+        Deepanshu
+        <span class="hero-and">&amp;</span>
+        Deepanshi
+      </div>
+      <div class="hero-date">Ring Ceremony · 5th July 2026</div>
+    </div>
+
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <div class="sarrow"></div>
+    </div>
+  </div>
+
+  <!-- SEC 2: FAMILIES -->
+  <div class="sec sec-bg-1">
+    <div class="sec-inner">
+      <div class="orn rv">✦ ❀ ✦</div>
+      <div class="fcard rv d1">
+        <div class="fcard-lbl">Groom's Family</div>
+        <div class="fcard-txt">
+          Sh. Ramniwas Shokeen<br>& Smt. Geeta Devi
+          <em>cordially invite you to the Ring Ceremony of their son</em>
+        </div>
+      </div>
+      <div class="couple-blk rv d2">
+        <div class="cname">Deepanshu</div>
+        <span class="cand">&amp;</span>
+        <div class="cname">Deepanshi</div>
+      </div>
+      <div class="fcard rv d3">
+        <div class="fcard-lbl">Bride's Family</div>
+        <div class="fcard-txt">
+          Sh. Shambhu Dagar<br>& Smt. Suman Dagar
+          <em>D/O</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEC 3: DETAILS -->
+  <div class="sec sec-bg-2">
+    <div class="sec-inner">
+      <div class="orn rv">✦ ❀ ✦</div>
+      <div class="dframe rv d1">
+        <div class="cer-script">Ring Ceremony</div>
+        <div class="dgrid">
+          <div class="dcell">
+            <div class="dlbl">Date</div>
+            <div class="dval">5 July<small>Sunday, 2026</small></div>
+          </div>
+          <div class="dcell">
+            <div class="dlbl">Time</div>
+            <div class="dval">3:00 PM<small>Onwards</small></div>
+          </div>
+          <div class="dcell full">
+            <div class="dlbl">Counting Down</div>
+            <div class="cd-row">
+              <div class="cdb"><span class="cdn" id="cdd">00</span><span class="cdu">Days</span></div>
+              <div class="cdb"><span class="cdn" id="cdh">00</span><span class="cdu">Hours</span></div>
+              <div class="cdb"><span class="cdn" id="cdm">00</span><span class="cdu">Mins</span></div>
+              <div class="cdb"><span class="cdn" id="cds">00</span><span class="cdu">Secs</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEC 4: MUSIC + MAP -->
+  <div class="sec sec-bg-3">
+    <div class="sec-inner">
+      <div class="orn rv">✦ ❀ ✦</div>
+      <div class="mplayer rv d1">
+        <button class="pbtn" id="pbtn" onclick="toggleAudio()">
+          <div class="ptri" id="ptri"></div>
+        </button>
+        <div class="sinfo">
+          <div class="stitle">Her</div>
+          <div class="sartist">JVKE</div>
+        </div>
+        <div class="mbrs" id="mbrs" style="display:none;">
+          <div class="mbr" style="animation-delay:0s"></div>
+          <div class="mbr" style="animation-delay:0.12s"></div>
+          <div class="mbr" style="animation-delay:0.25s"></div>
+          <div class="mbr" style="animation-delay:0.38s"></div>
+          <div class="mbr" style="animation-delay:0.5s"></div>
+        </div>
+      </div>
+      <a href="https://maps.app.goo.gl/Y9Eow8RaAPTwdezm6" target="_blank" class="mapbtn rv d2">📍 &nbsp;View Venue on Map</a>
+      <div class="cbox rv d3">
+        <div class="clbl">For Enquiries</div>
+        <a href="tel:+919990315851" class="cnum">+91 99903 15851</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">✦ Deepanshu weds Deepanshi ✦ 05 · 07 · 2026 ✦</div>
+</div>
+
+<script>
+// ── AUDIO ──
+const DRIVE_ID = '180pnqKvXreOH9mFySjzBYC3k-BSc-075';
+const audio = document.getElementById('bgm');
+// Try multiple sources for cross-browser compat
+const srcs = [
+  `https://drive.google.com/uc?export=download&id=${DRIVE_ID}`,
+  `https://docs.google.com/uc?export=open&id=${DRIVE_ID}`
+];
+audio.src = srcs[0];
+audio.onerror = () => { audio.src = srcs[1]; };
+
+let playing = false;
+
+function setUI(p){
+  playing = p;
+  const tri = document.getElementById('ptri');
+  const bars = document.getElementById('mbrs');
+  const btn = document.getElementById('pbtn');
+  let pu = document.getElementById('pui');
+  if(p){
+    tri.style.display='none';
+    if(!pu){
+      pu=document.createElement('div');pu.id='pui';pu.className='pbrs';
+      pu.innerHTML='<div class="pbr"></div><div class="pbr"></div>';
+      btn.appendChild(pu);
+    }
+    bars.style.display='flex';
+  } else {
+    tri.style.display='block';
+    if(pu)pu.remove();
+    bars.style.display='none';
+  }
+}
+
+function toggleAudio(){
+  if(playing){ audio.pause(); setUI(false); }
+  else { audio.play().catch(e=>console.log(e)); setUI(true); }
+}
+
+// ── OPEN INVITATION ──
+function openInv(){
+  document.getElementById('intro').classList.add('hide');
+  setTimeout(()=>document.getElementById('intro').style.display='none',1400);
+  document.getElementById('main').classList.add('show');
+  // Play on tap - works on iPhone
+  setTimeout(()=>{
+    audio.play().then(()=>setUI(true)).catch(()=>{});
+  }, 800);
+}
+
+// ── PARALLAX ──
+let ticking = false;
+window.addEventListener('scroll',()=>{
+  if(!ticking){
+    requestAnimationFrame(()=>{
+      const sy = window.scrollY;
+      const l1=document.getElementById('l1');
+      const l2=document.getElementById('l2');
+      const l3=document.getElementById('l3');
+      if(l1)l1.style.transform=`translateY(${sy*0.07}px)`;
+      if(l2)l2.style.transform=`translateY(${sy*0.16}px)`;
+      if(l3)l3.style.transform=`translateY(${sy*0.28}px)`;
+      checkRv();
+      ticking=false;
+    });
+    ticking=true;
+  }
+});
+
+// ── SCROLL REVEAL ──
+function checkRv(){
+  document.querySelectorAll('.rv:not(.on)').forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight*0.9)
+      el.classList.add('on');
+  });
+}
+window.addEventListener('load', checkRv);
+setTimeout(checkRv, 500);
+
+// ── COUNTDOWN ──
+function tick(){
+  const diff = new Date('2026-07-05T15:00:00+05:30') - new Date();
+  if(diff>0){
+    document.getElementById('cdd').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
+    document.getElementById('cdh').textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
+    document.getElementById('cdm').textContent=String(Math.floor(diff%3600000/60000)).padStart(2,'0');
+    document.getElementById('cds').textContent=String(Math.floor(diff%60000/1000)).padStart(2,'0');
+  }
+}
+tick(); setInterval(tick,1000);
+
+// ── PETALS ──
+const pc=['rgba(180,212,235,0.68)','rgba(255,255,255,0.58)','rgba(200,225,242,0.62)','rgba(210,230,246,0.6)'];
+for(let i=0;i<24;i++){
+  const p=document.createElement('div');p.className='petal';
+  const sz=5+Math.random()*9;
+  p.style.cssText=`left:${Math.random()*100}%;width:${sz}px;height:${sz}px;background:${pc[Math.floor(Math.random()*pc.length)]};animation-delay:${Math.random()*16}s;animation-duration:${11+Math.random()*16}s;`;
+  document.body.appendChild(p);
+}
+</script>
+</body>
+</html>
